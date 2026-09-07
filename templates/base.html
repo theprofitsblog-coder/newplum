@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ meta_description }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="stylesheet" href="{{ base_url }}/static/css/style.css">
+  {% block schema %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <a href="{{ base_url }}/" class="logo">ProFlow<span>Plumbing</span></a>
+    <a href="tel:+18315326042" class="header-phone">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+      (831) 532-6042
+    </a>
+    <nav>
+      <ul>
+        <li><a href="{{ base_url }}/">Home</a></li>
+        <li><a href="{{ base_url }}/#services">Services</a></li>
+        <li><a href="{{ base_url }}/#areas">Service Areas</a></li>
+        <li><a href="{{ base_url }}/about/">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="{{ base_url }}/">Home</a>
+      <a href="{{ base_url }}/about/">About</a>
+      <a href="{{ base_url }}/affiliate-disclosure/">Disclosure</a>
+    </div>
+    <p>ProFlow Plumbing &mdash; Licensed and insured plumbing services across 24 states.</p>
+    <p style="margin-top: 0.5rem;">Phone: <a href="tel:+18315326042">(831) 532-6042</a></p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">This site connects homeowners with local plumbing professionals. We may receive compensation for referrals.</p>
+    <p style="margin-top: 0.5rem;">&copy; 2025 ProFlow Plumbing. All rights reserved.</p>
+  </footer>
+
+  <div class="mobile-cta">
+    <a href="tel:+18315326042">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+      Call Now &mdash; (831) 532-6042
+    </a>
+  </div>
+
+  <script>
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+      q.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+      });
+    });
+    // City search filter
+    var searchInput = document.getElementById('city-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        var filter = this.value.toLowerCase();
+        document.querySelectorAll('.city-directory a').forEach(function(a) {
+          a.style.display = a.textContent.toLowerCase().includes(filter) ? '' : 'none';
+        });
+      });
+    }
+  </script>
+</body>
+</html>

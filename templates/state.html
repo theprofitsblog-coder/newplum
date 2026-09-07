@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Plumber",
+  "name": "ProFlow Plumbing",
+  "telephone": "+1-831-532-6042",
+  "areaServed": {{ city_names | tojson }},
+  "priceRange": "$$"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumbs">
+  <a href="{{ base_url }}/">Home</a><span>›</span>
+  <a href="{{ base_url }}/#areas">Plumbing</a><span>›</span>
+  {{ state_name }}
+</div>
+
+<div class="container">
+  <h1 class="section-title">Plumbing Services in {{ state_name }}</h1>
+  <p class="page-intro">We serve {{ city_count }} cities across {{ state_name }}. If you need a plumber, we can connect you with a licensed professional in your area. Browse the cities below to find local plumbing service.</p>
+
+  <input type="text" id="city-search" class="city-search" placeholder="Search for your city in {{ state_name }}...">
+
+  <div class="city-directory">
+    {% for city in cities %}
+    <a href="{{ base_url }}/plumbing/{{ state_code | lower }}/{{ city.slug }}/">{{ city.name }}, {{ state_code }}</a>
+    {% endfor %}
+  </div>
+
+  <div class="cta-block" style="margin-top: 2rem;">
+    <h2>Need a Plumber in {{ state_name }}?</h2>
+    <p>Call now and we will connect you with a licensed plumber near you.</p>
+    <a href="tel:+18315326042" class="cta-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+      Call (831) 532-6042
+    </a>
+  </div>
+</div>
+{% endblock %}

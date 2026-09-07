@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Plumber",
+  "name": "ProFlow Plumbing",
+  "telephone": "+1-831-532-6042",
+  "areaServed": {{ states_list | tojson }},
+  "priceRange": "$$"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>Fast, Reliable Plumbing Services Near You</h1>
+  <p>Licensed plumbers ready to help with leaks, clogs, water heaters, and emergencies. Serving {{ total_cities }} cities across {{ total_states }} states.</p>
+  <a href="tel:+18315326042" class="cta-btn">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+    Call (831) 532-6042
+  </a>
+</section>
+
+<div class="container" id="areas">
+  <h2 class="section-title">Find Your City</h2>
+  <input type="text" id="city-search" class="city-search" placeholder="Type your city name to find a local plumber...">
+  <div class="state-grid" style="margin-bottom: 2rem;">
+    {% for state in states %}
+    <a href="{{ base_url }}/plumbing/{{ state.code | lower }}/">{{ state.name }} <span class="state-count">{{ state.city_count }} cities</span></a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="container" id="services">
+  <h2 class="section-title">Our Plumbing Services</h2>
+  <div class="services-grid">
+    <div class="service-item">
+      <span class="icon">🔧</span>
+      <h3>Leak Repair</h3>
+      <p>Fast detection and repair of pipe leaks, slab leaks, and fixture leaks.</p>
+    </div>
+    <div class="service-item">
+      <span class="icon">🚿</span>
+      <h3>Drain Cleaning</h3>
+      <p>Clear clogged drains, sewer lines, and toilet blockages.</p>
+    </div>
+    <div class="service-item">
+      <span class="icon">🔥</span>
+      <h3>Water Heater Service</h3>
+      <p>Repair, replacement, and installation of tank and tankless water heaters.</p>
+    </div>
+    <div class="service-item">
+      <span class="icon">🚨</span>
+      <h3>Emergency Plumbing</h3>
+      <p>Burst pipes, flooding, and urgent plumbing problems handled fast.</p>
+    </div>
+    <div class="service-item">
+      <span class="icon">🏠</span>
+      <h3>Fixture Installation</h3>
+      <p>Faucets, toilets, sinks, and garbage disposal installation.</p>
+    </div>
+    <div class="service-item">
+      <span class="icon">🔩</span>
+      <h3>Pipe Repair and Repiping</h3>
+      <p>Fix corroded, frozen, or damaged pipes. Full repiping when needed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="section-title">Why Homeowners Call Us</h2>
+  <div class="trust-grid">
+    <div class="trust-item">
+      <div class="icon">⚡</div>
+      <h3>Fast Response</h3>
+      <p>We connect you with local plumbers who can get to you quickly.</p>
+    </div>
+    <div class="trust-item">
+      <div class="icon">✅</div>
+      <h3>Licensed and Insured</h3>
+      <p>Every plumber in our network is licensed and carries full insurance.</p>
+    </div>
+    <div class="trust-item">
+      <div class="icon">💲</div>
+      <h3>Upfront Pricing</h3>
+      <p>Get clear pricing before any work starts. No surprise charges.</p>
+    </div>
+    <div class="trust-item">
+      <div class="icon">🛡️</div>
+      <h3>Satisfaction Focused</h3>
+      <p>We stand behind the quality of work delivered by our network.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="cta-block">
+    <h2>Need a Plumber Right Now?</h2>
+    <p>Call us and we will connect you with a licensed plumber in your area.</p>
+    <a href="tel:+18315326042" class="cta-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+      Call (831) 532-6042
+    </a>
+  </div>
+</div>
+{% endblock %}
